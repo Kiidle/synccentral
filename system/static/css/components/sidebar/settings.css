@@ -1,0 +1,78 @@
+.sidebar {
+    background-color: #858D93;
+    height: 100vh;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .settings {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    height: 100px;
+    padding-left: 20px;
+    border-bottom-color: #a7b3bc;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.sidebar .list {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.sidebar .list .item,
+.sidebar .bottom .item {
+    margin: 10px 0;
+    height: 25px;
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "icon text";
+    grid-column-gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.sidebar .list .current {
+    background-color: #747b81;
+}
+
+.sidebar .list .item:hover,
+.sidebar .bottom .item:hover {
+    background-color: #747b81;
+}
+
+.sidebar .list .icon,
+.sidebar .bottom .icon {
+    grid-area: icon;
+    display: flex;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(20deg) brightness(103%) contrast(102%);
+}
+
+.sidebar .list .text,
+.sidebar .bottom .text {
+    grid-area: text;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.sidebar .bottom {
+    border-top-color: #a7b3bc;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.sidebar .bottom {
+    padding: 20px;
+}

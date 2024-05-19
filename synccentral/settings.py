@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +27,9 @@ SECRET_KEY = "django-insecure-yq8n#=4auy3*)pnb4wum9wraa7=*9yz(ut=-dh2ns@f3_-p8wk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.1.120", "localhost"]
+
+LOGIN_URL = "login"
 
 
 # Application definition
@@ -52,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "synccentral.urls"
@@ -107,6 +112,24 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+LANGUAGE_CODE = "de"
+
+LANGUAGES = [
+    ("de", _("deutsch")),
+    ("en", _("english")),
+    ("fr", _("français")),
+    ("it", _("italiano")),
+    ("mk", _("makedonski")),
+    ("rm", _("rumantsch")),
+    ("ru", _("russkiy")),
+    ("sr", _("Srpski")),
+    ("sq", _("shqiptare")),
+]
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 LANGUAGE_CODE = "en-us"
 

@@ -1,0 +1,10 @@
+{% load static %}
+{% load i18n %}
+<a href='{% url 'home' %}' class="grid">
+    <div class="logo">
+        <img src="{% static 'images/logo/synccentral_transparent.png' %}" alt="synccentral" />
+    </div>
+    <div class="title">
+        <p>{{ title }}</p>
+    </div>
+</a>

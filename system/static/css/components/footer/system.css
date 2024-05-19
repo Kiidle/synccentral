@@ -1,0 +1,70 @@
+footer {
+    width: 100%;
+    background-color: #858D93;
+    display: grid;
+    grid-template-columns: 1fr 1200px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        ". footer-content .";
+}
+
+footer .content {
+    grid-area: footer-content;
+    display: grid;
+    grid-template-columns: 1fr 300px 300px 300px 300px 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        ". title title title title ."
+        ". legalnote copyright privacy terms .";
+}
+
+footer .content .title,
+footer .content .legalnote,
+footer .content .copyright,
+footer .content .privacy,
+footer .content .terms {
+    padding: 10px;
+}
+
+footer .content .title a,
+footer .content .legalnote a,
+footer .content .copyright a,
+footer .content .privacy a,
+footer .content .terms a {
+    cursor: pointer;
+}
+
+footer .content .title {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: left;
+}
+
+footer .content .title a {
+    color: white;
+}
+
+footer .content .legalnote a,
+footer .content .copyright a,
+footer .content .privacy a,
+footer .content .terms a {
+    color: #f0f0f0;
+}
+
+footer .content .legalnote {
+    grid-area: legalnote;
+}
+
+footer .content .copyright {
+    grid-area: copyright;
+}
+
+footer .content .privacy {
+    grid-area: privacy;
+}
+
+footer .content .terms {
+    grid-area: terms;
+}

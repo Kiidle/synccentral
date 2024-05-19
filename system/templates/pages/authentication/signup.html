@@ -1,0 +1,26 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/global/global.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/header/system.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/footer/system.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/forms/authentication.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/synccentral/system.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/buttons/nav.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/buttons/login.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/buttons/form.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/cards/profile/system.css' %}">
+        <title>{% translate 'SyncCentral Network' %}</title>
+    </head>
+    <body>
+        {% include 'components/header/system.html' %}
+        <main>
+                {% include 'components/forms/authentication.html' with auth_type="signup" %}
+            </div>
+        </main>
+        {% include 'components/footer/system.html' %}
+    </body>
