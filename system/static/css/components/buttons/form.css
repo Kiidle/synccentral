@@ -1,0 +1,19 @@
+.btn-form-action {
+    background-color: #858D93;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+
+.btn-form-action:hover {
+    background-color: #666c71;
+}

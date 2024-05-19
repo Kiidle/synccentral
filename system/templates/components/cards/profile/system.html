@@ -1,0 +1,34 @@
+{% load static %}
+<div class="profile">
+    <div class="fullname">
+        <div class="name">
+            <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+        </div>
+    </div>
+    <div class="username">
+        <p>@{{ request.user.username }}</p>
+    </div>
+    <div class="pb" onclick="toggleProfileMenu()">
+        <img src="{% static 'svgs/account-circle.svg' %}" height="100%"/>
+    </div>
+    <div class="menu" id="profileMenu">
+        <ul>
+            <li>
+                <a href="{% url 'settings' %}">
+                    <div class="icon">
+                        <img src="{% static 'svgs/cog.svg' %}" height="100%"/>
+                    </div>
+                    <p class="text">Einstellungen</p>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <div class="icon-red">
+                        <img src="{% static 'svgs/logout.svg' %}" height="100%"/>
+                    </div>
+                    <p class="text-red">Abmelden</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

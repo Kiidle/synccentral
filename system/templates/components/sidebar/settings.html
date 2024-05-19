@@ -1,0 +1,75 @@
+{% load static %}
+{% load i18n %}
+<div class="sidebar">
+    <div class="settings">
+        <p>{% translate 'SyncCentral Network' %}</p>
+    </div>
+    <div class="list">
+        <a href="{% url 'settings' %}" class="item {% if page == 'dashboard' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/grid.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Dashboard' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_profile' %}" class="item {% if page == 'profile' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/at-sign.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Profil' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_interface' %}" class="item {% if page == 'interface' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/layout.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Benutzeroberfläche' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_friends' %}" class="item {% if page == 'friends' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/users.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Freunde' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_notifications' %}" class="item {% if page == 'notifications' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/mail.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Benachrichtigungen' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_activities' %}" class="item {% if page == 'activities' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/activity.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Aktivitäten' %}</p>
+            </div>
+        </a>
+        <a href="{% url 'settings_account' %}" class="item {% if page == 'account' %}current{% endif %}">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/user.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Konto' %}</p>
+            </div>
+        </a>
+    </div>
+    <div class="bottom">
+        <a href="{% url 'logout' %}" class="item">
+            <div class="icon">
+                <img src="{% static 'svgs/feather/log-out.svg' %}" height="100%"/>
+            </div>
+            <div class="text">
+                <p>{% translate 'Abmelden' %}</p>
+            </div>
+        </a>
+    </div>
+</div>

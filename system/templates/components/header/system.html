@@ -1,0 +1,24 @@
+{% load static %}
+{% load i18n %}
+<header>
+    <div class="roof"></div>
+    <div class="content">
+        <div class="header-content-synccentral">
+            {% include 'components/synccentral/system.html' with title=_("SyncCentral Network") %}
+        </div>
+        <div class="header-content-navs">
+            {% include 'components/buttons/nav.html' with text=_("Zum Produkt") %}
+            {% include 'components/buttons/nav.html' with text=_("Community") %}
+            {% include 'components/buttons/nav.html' with text=_("Über uns") %}
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="header-content-login">
+                {% include 'components/cards/profile/system.html' %}
+            </div>
+        {% else %}
+            <div class="header-content-login">
+                {% include 'components/buttons/login.html' %}
+            </div>
+        {% endif %}
+    </div>
+</header>

@@ -1,0 +1,35 @@
+.body-settings {
+    background-color: #f0f0f0;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 150px 1fr;
+    grid-template-areas:
+        "layout-sidebar layout-header"
+        "layout-sidebar layout-main";
+}
+
+.layout .layout-sidebar {
+    grid-area: layout-sidebar;
+}
+
+.layout .layout-header {
+    grid-area: layout-header;
+    background-color: white;
+}
+
+.layout .layout-main {
+    grid-area: layout-main;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1200px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        ". layout-content .";
+}
+
+.layout .layout-main .layout-content {
+    grid-area: layout-content;
+}

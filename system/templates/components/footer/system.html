@@ -1,0 +1,21 @@
+{% load static %}
+{% load i18n %}
+<footer>
+<div class="content">
+    <div class="title">
+        <a href="{% url 'home' %}">{% translate 'Copyright © 2024 SyncCentral Network' %}</a>
+    </div>
+    <div class="legalnote">
+        <a>{% translate 'Impressum' %}</a>
+    </div>
+    <div class="copyright">
+        <a>{% translate 'Urheberrecht' %}</a>
+    </div>
+    <div class="privacy">
+        <a>{% translate 'Datenschutzerklärung' %}</a>
+    </div>
+    <div class="terms">
+        <a>{% translate 'Nutzungsbedingungen' %}</a>
+    </div>
+</div>
+</footer>

@@ -1,0 +1,68 @@
+form {
+    margin: 100px auto;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr auto;
+    grid-template-areas:
+        "header"
+        "content"
+        "actions";
+}
+
+form .header {
+    grid-area: header;
+    background-color: #858D93;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+form .content {
+    padding: 10px;
+    grid-area: content;
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+form .content input {
+    height: 48.75px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-color: #dfdfdf;
+    border-width: 1px;
+    border-style: solid;
+    outline: none;
+    border-radius: 1px;;
+}
+
+form .content .error {
+    color: red;
+    display: flex;
+    padding-left: 10px;
+}
+
+form .content input:focus {
+    outline-color: #858D93;
+    outline-width: 2px;
+    outline-style: solid;
+}
+
+form .actions {
+    grid-area: actions;
+    border-top-color: #dfdfdf;
+    display: grid;
+    grid-row-gap: 10px;
+    padding: 10px;
+}
+
+form .actions .instead {
+    color: #858D93;
+}
