@@ -23,7 +23,8 @@
             </div>
             <main class="layout-main">
                 <div class="layout-content">
-                    {% include 'components/cards/settings.html' with title=_("Darstellungsmodus") type="text" content="" %}
+                    {% include 'components/cards/settings.html' with title=_("Darstellungsmodus") type="text" state=state display="maintenance" url_name="" url_pk=request.user.advanced.pk content="MAINTENANCE" %}
+                    {% include 'components/cards/settings.html' with title=_("Spracheinstellungen") type="text" state=state display="maintenance" url_name="" url_pk=request.user.advanced.pk content="MAINTENANCE" %}
                 </div>
             </main>
         </div>

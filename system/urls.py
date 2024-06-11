@@ -8,7 +8,9 @@ from system.views import (
     SettingsDashboardView,
     SettingsFriendsView,
     SettingsInterfaceView,
+    SettingsMediaEditBiographie,
     SettingsNotificationsView,
+    SettingsProfileEditBiographie,
     SettingsProfileView,
     SignUpView,
 )
@@ -22,6 +24,16 @@ urlpatterns = [
     path("logout/", views.custom_logout, name="logout"),
     path("settings/", SettingsDashboardView.as_view(), name="settings"),
     path("settings/profile/", SettingsProfileView.as_view(), name="settings_profile"),
+    path(
+        "settings/profile/<int:pk>/bio/",
+        SettingsProfileEditBiographie.as_view(),
+        name="settings_profile_bio_update",
+    ),
+    path(
+        "settings/profile/<int:pk>/media/",
+        SettingsMediaEditBiographie.as_view(),
+        name="settings_profile_media_update",
+    ),
     path(
         "settings/interface/",
         SettingsInterfaceView.as_view(),
