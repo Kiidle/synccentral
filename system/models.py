@@ -31,28 +31,69 @@ class AdvancedUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="advanced")
     pp = models.CharField(max_length=50, choices=Profile.choices, default=Profile.NONE)
 
-    biographie = models.TextField(max_length=500, null=True, blank=True)
-    discord_username = models.CharField(max_length=20, null=True, blank=True)
-    epicgames_username = models.CharField(max_length=20, null=True, blank=True)
-    facebook_username = models.CharField(max_length=20, null=True, blank=True)
-    instagram_username = models.CharField(max_length=20, null=True, blank=True)
-    linkedin_username = models.CharField(max_length=20, null=True, blank=True)
-    pinterest_username = models.CharField(max_length=20, null=True, blank=True)
-    playstation_username = models.CharField(max_length=20, null=True, blank=True)
-    reddit_username = models.CharField(max_length=20, null=True, blank=True)
-    snapchat_username = models.CharField(max_length=20, null=True, blank=True)
-    steam_username = models.CharField(max_length=20, null=True, blank=True)
-    threads_username = models.CharField(max_length=20, null=True, blank=True)
-    tiktok_username = models.CharField(max_length=20, null=True, blank=True)
-    twitter_username = models.CharField(max_length=20, null=True, blank=True)
-    xbox_username = models.CharField(max_length=20, null=True, blank=True)
-    xing_username = models.CharField(max_length=20, null=True, blank=True)
-    youtube_username = models.CharField(max_length=20, null=True, blank=True)
-    overtime_hours = models.FloatField(null=True, blank=True)
-    privacy = models.BooleanField(default=False)
-    terms = models.BooleanField(default=False)
-    disclaimer = models.BooleanField(default=False)
-    copyright = models.BooleanField(default=False)
+    biographie = models.TextField(
+        max_length=500, null=True, blank=True, verbose_name=_("Biografie")
+    )
+    discord_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Discord Benutzername")
+    )
+    epicgames_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Epic Games Benutzername")
+    )
+    facebook_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Facebook Benutzername")
+    )
+    instagram_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Instagram Benutzername")
+    )
+    linkedin_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("LinkedIn Benutzername")
+    )
+    pinterest_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Pinterest Benutzername")
+    )
+    playstation_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("PlayStation Benutzername")
+    )
+    reddit_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Reddit Benutzername")
+    )
+    snapchat_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Snapchat Benutzername")
+    )
+    steam_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Steam Benutzername")
+    )
+    threads_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Threads Benutzername")
+    )
+    tiktok_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("TikTok Benutzername")
+    )
+    twitter_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("X (Twitter) Benutzername")
+    )
+    xbox_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Xbox Benutzername")
+    )
+    xing_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("Xing Benutzername")
+    )
+    youtube_username = models.CharField(
+        max_length=20, null=True, blank=True, verbose_name=_("YouTube Benutzername")
+    )
+    privacy = models.BooleanField(
+        default=False, verbose_name=_("Zustimmung Datenschutzerklärung")
+    )
+    terms = models.BooleanField(
+        default=False, verbose_name=_("Zustimmung Nutzungsrichtlinien")
+    )
+    disclaimer = models.BooleanField(
+        default=False, verbose_name=_("Zustimmung Haftungsausschluss")
+    )
+    copyright = models.BooleanField(
+        default=False, verbose_name=_("Zustimmung Urheberrecht")
+    )
 
     def format_biographie(self):
         return linebreaksbr(self.biographie)
@@ -65,6 +106,33 @@ class AdvancedUser(models.Model):
             return formatted_date
         else:
             return ""
+
+    MEDIA_LOGOS = {
+        "discord_username": "discord",
+        "epicgames_username": "epicgames",
+        "facebook_username": "facebook",
+        "instagram_username": "instagram",
+        "linkedin_username": "linkedin",
+        "pinterest_username": "pinterest",
+        "playstation_username": "playstation",
+        "reddit_username": "reddit",
+        "snapchat_username": "snapchat",
+        "steam_username": "steam",
+        "threads_username": "threads",
+        "tiktok_username": "tiktok",
+        "twitter_username": "x",
+        "xbox_username": "xbox",
+        "xing_username": "xing",
+        "youtube_username": "youtube",
+    }
+
+    def format_media_usernames(self):
+        media_data = []
+        for field, logo in self.MEDIA_LOGOS.items():
+            username = getattr(self, field, None)
+            if username:
+                media_data.append({"username": username, "logo": logo})
+        return media_data
 
     def __str__(self):
         return f"{self.user.username}"

@@ -1,13 +1,70 @@
+{% load static %}
 {% load i18n %}
 <div class="card">
     <div class="card-header">
         <p>{{ title }}</p>
     </div>
+    <div class="card-buttons">
+        {% if url_name and url_pk %}
+            {% if display == "update" %}
+            <a href="{% url url_name url_pk %}" class="edit button">
+                <img src="{% static 'svgs/feather/edit-2.svg' %}" />
+            </a>
+            {% endif %}
+            {% if display == "delete" %}
+            <a href="{% url url_name url_pk %}" class="delete button">
+                <img src="{% static 'svgs/feather/trash-2.svg' %}" />
+            </a>
+            {% endif %}
+            {% if display == "maintenance" %}
+            <a href="{% url url_name url_pk %}" class="maintenance button">
+                <img src="{% static 'svgs/feather/tool.svg' %}" />
+            </a>
+            {% endif %}
+        {% endif %}
+    </div>
     <div class="card-content">
-        {%if content %}
-            <p>{{ content }}</p>
-        {% else %}
-        <p>{% translate " " %}</p>
+        {% if state == "read" %}
+            {% if type == "text" %}
+                {% if content %}
+                <p>{{ content }}</p>
+                {% else %}
+                <p>{% translate " " %}</p>
+                {% endif %}
+            {% endif %}
+            {% if type == "media" %}
+                {% if content %}
+                    <ul>
+                        {% for item in content %}
+                            <li>
+                                <img class="{{ item.logo }}" src="{% static 'svgs/logos/' %}{{ item.logo }}.svg" alt="{{ item.username }} logo" />
+                                <p>{{ item.username }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>{% translate "Keine Medien-Benutzernamen verfügbar" %}</p>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        {% if state == "update" %}
+        <form method="post" action="{% if form_url_name and not form_url_pk %}{% url form_url_name %}{% endif %}{% if form_url_name and form_url_pk %}{% url form_url_name form_url_pk %}{% endif %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="field-container">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="actions">
+                <div class="cancel">
+                    <a href="{% if cancel_url_name and not cancel_url_pk %}{% url cancel_url_name %}{% endif %}{% if cancel_url_name and cancel_url_pk %}{% url cancel_url_name cancel_url_pk %}{% endif %}">Zurück</a>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="save button">{% translate "Speichern" %}</button>
+                </div>
+            </div>
+        </form>
         {% endif %}
     </div>
 </div>

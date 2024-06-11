@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -8,7 +9,7 @@ from django.views import generic
 
 from system.models import AdvancedUser, InterfaceUser, SocialUser
 
-from .forms import LoginForm, SignUpForm
+from .forms import BiographieForm, LoginForm, MediaForm, SignUpForm
 
 User = get_user_model()
 
@@ -76,10 +77,66 @@ class SettingsProfileView(generic.ListView):
     model = User
     template_name = "pages/settings/profile.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["state"] = "read"
+        return context
+
+
+class SettingsProfileEditBiographie(LoginRequiredMixin, generic.UpdateView):
+    model = AdvancedUser
+    form_class = BiographieForm
+    template_name = "pages/settings/update.html"
+    context_object_name = "advanced_user"
+
+    def get_object(self, queryset=None):
+        return self.request.user.advanced
+
+    def get_success_url(self):
+        return reverse_lazy("settings_profile")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["state"] = "update"
+        context["fields"] = self.form_class().fields
+        context["form_title"] = _("Biografie")
+        context["form_url_name"] = "settings_profile_bio_update"
+        context["form_url_pk"] = self.request.user.advanced.pk
+        context["cancel_url_name"] = "settings_profile"
+        return context
+
+
+class SettingsMediaEditBiographie(LoginRequiredMixin, generic.UpdateView):
+    model = AdvancedUser
+    form_class = MediaForm
+    template_name = "pages/settings/update.html"
+    context_object_name = "advanced_user"
+
+    def get_object(self, queryset=None):
+        return self.request.user.advanced
+
+    def get_success_url(self):
+        return reverse_lazy("settings_profile")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["state"] = "update"
+        context["fields"] = self.form_class().fields
+        context["form_title"] = _("Medien")
+        context["form_url_name"] = "settings_profile_media_update"
+        context["form_url_pk"] = self.request.user.advanced.pk
+        context["cancel_url_name"] = "settings_profile"
+        return context
+
 
 class SettingsInterfaceView(generic.ListView):
     model = User
     template_name = "pages/settings/interface.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["state"] = "read"
+        return context
 
 
 class SettingsFriendsView(generic.ListView):

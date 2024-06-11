@@ -3,11 +3,11 @@
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: 50px 1fr;
     grid-template-areas:
-        "card-header"
-        "card-content";
+        "card-header card-buttons"
+        "card-content card-content";
         margin: 50px 0;
         padding: 50px;
         grid-row-gap: 25px;
@@ -19,6 +19,46 @@
     align-items: center;
 }
 
+.card .card-buttons {
+    grid-area: card-buttons;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+}
+
+.card .card-buttons .button {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card .card-buttons .button:hover {
+    transform: scale(1.1)
+
+}
+
+.card .card-buttons .button img {
+    filter: invert()
+}
+
+.card .card-buttons .edit {
+    background-color: #858D93;
+}
+
+.card .card-buttons .maintenance {
+    background-color: #ffbf00;
+}
+
+.card .card-buttons .delete {
+    background-color: rgb(131, 0, 0);
+}
+
 .card .card-header p {
     font-size: 1.2rem;
     font-weight: bold;
@@ -28,6 +68,175 @@
     grid-area: card-content;
 }
 
+.card .card-content ul {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card .card-content ul li {
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    grid-column-gap: 10px;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "logo username";
+        margin: 12px 0;
+ }
+
+ .card .card-content ul li img {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+ }
+
+ .card .card-content ul li p {
+    grid-area: username;
+    display: flex;
+    align-items: center;
+ }
+
+ .card .card-content ul li .discord {
+    filter: invert(30%) sepia(87%) saturate(2065%) hue-rotate(226deg) brightness(102%) contrast(90%);
+ }
+
+ .card .card-content ul li .epicgames {
+    filter: invert(15%) sepia(1%) saturate(746%) hue-rotate(346deg) brightness(95%) contrast(86%);
+ }
+
+ .card .card-content ul li .facebook {
+    filter: invert(34%) sepia(99%) saturate(4734%) hue-rotate(214deg) brightness(99%) contrast(104%);
+ }
+
+ .card .card-content ul li .instagram {
+    filter: invert(51%) sepia(59%) saturate(6374%) hue-rotate(325deg) brightness(92%) contrast(93%);
+ }
+
+ .card .card-content ul li .linkedin {
+    filter: invert(15%) sepia(97%) saturate(4075%) hue-rotate(200deg) brightness(100%) contrast(92%);
+ }
+
+ .card .card-content ul li .pinterest {
+    filter: invert(35%) sepia(96%) saturate(5621%) hue-rotate(341deg) brightness(71%) contrast(117%);
+ }
+
+ .card .card-content ul li .playstation {
+    filter: invert(13%) sepia(99%) saturate(2536%) hue-rotate(211deg) brightness(97%) contrast(102%);
+}
+
+.card .card-content ul li .reddit {
+    filter: invert(30%) sepia(60%) saturate(2924%) hue-rotate(1deg) brightness(102%) contrast(105%);
+}
+
+.card .card-content ul li .snapchat {
+    filter: invert(82%) sepia(96%) saturate(7500%) hue-rotate(357deg) brightness(103%) contrast(101%);
+}
+
+.card .card-content ul li .steam,
+.card .card-content ul li .threads,
+.card .card-content ul li .tiktok,
+.card .card-content ul li .x {
+    filter: invert(0%) sepia(92%) saturate(0%) hue-rotate(259deg) brightness(106%) contrast(106%);
+}
+
+.card .card-content ul li .xbox {
+    filter: invert(15%) sepia(98%) saturate(5326%) hue-rotate(109deg) brightness(100%) contrast(87%);
+}
+
+.card .card-content ul li .xing {
+    filter: invert(27%) sepia(32%) saturate(2963%) hue-rotate(151deg) brightness(91%) contrast(105%);
+}
+
+.card .card-content ul li .youtube {
+    filter: invert(14%) sepia(100%) saturate(4259%) hue-rotate(359deg) brightness(98%) contrast(123%);
+}
+
+.card .card-content form .field-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+        "label"
+        "field";
+}
+
+.card .card-content form .field-container label {
+    grid-area: label;
+    display: flex;
+    align-items: center;
+}
+
+
+
 .card .card-content p {
     color: #666c71;
+}
+
+.card .card-content form .field-container textarea {
+    grid-area: field;
+    padding: 10px;
+    width: 100%;
+    border-color: #858D93;
+    border-width: 1px;
+    border-style: solid;
+    resize: none;
+}
+
+.card .card-content form .field-container input {
+    height: 30px;
+    padding: 10px;
+}
+
+.card .card-content form .actions {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 200px 200px 1fr;
+    grid-template-rows: 50px;
+    grid-template-areas:
+        ". cancel submit .";
+        grid-column-gap: 20px;
+}
+
+.card .card-content .actions .cancel,
+.card .card-content .actions .submit {
+    display: flex;
+}
+
+.card .card-content .actions .cancel {
+    grid-area: cancel;
+}
+
+.card .card-content .actions .submit {
+    grid-area: submit;
+}
+
+
+.card .card-content .actions .cancel a,
+.card .card-content .actions .submit button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card .card-content .actions .cancel a:hover,
+.card .card-content .actions .submit button:hover {
+    transform: scale(1.1);
+}
+
+.card .card-content .actions .cancel a {
+    background-color: rgb(131, 0, 0);
+    color: white;
+}
+
+.card .card-content .actions .submit button {
+    background-color: #858D93;
+    color: white;
+    border: none;
+    cursor: pointer;
 }

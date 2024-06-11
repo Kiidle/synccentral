@@ -23,8 +23,7 @@
             </div>
             <main class="layout-main">
                 <div class="layout-content">
-                    {% include 'components/cards/settings.html' with title=_("Biografie") type="text" state=state display="update" url_name="settings_profile_bio_update" url_pk=request.user.advanced.pk  content=request.user.advanced.format_biographie %}
-                    {% include 'components/cards/settings.html' with title=_("Medien") type="media" state=state display="update" url_name="settings_profile_media_update" url_pk=request.user.advanced.pk content=request.user.advanced.format_media_usernames %}
+                    {% include 'components/cards/settings.html' with title=form_title type="text" state=state form_url_name=form_url_name form_url_pk=form_url_pk cancel_url_name=cancel_url_name url_pk=request.user.advanced.pk  content=request.user.advanced.format_biographie %}
                 </div>
             </main>
         </div>

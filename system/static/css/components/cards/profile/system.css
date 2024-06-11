@@ -84,6 +84,10 @@
     padding: 12px;
 }
 
+.profile .menu ul li a img {
+    width: 100%;
+}
+
 .profile .menu ul li a .icon {
     display: flex;
     filter: invert(46%) sepia(12%) saturate(222%) hue-rotate(165deg) brightness(87%) contrast(91%);

@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MaxLengthValidator
 from django.forms import ModelForm
 
+from system.models import AdvancedUser
+
 User = get_user_model()
 
 
@@ -47,3 +49,32 @@ class SignUpForm(ModelForm):
         if commit:
             user.save()
         return user
+
+
+class BiographieForm(forms.ModelForm):
+    class Meta:
+        model = AdvancedUser
+        fields = ["biographie"]
+
+
+class MediaForm(forms.ModelForm):
+    class Meta:
+        model = AdvancedUser
+        fields = [
+            "discord_username",
+            "epicgames_username",
+            "facebook_username",
+            "instagram_username",
+            "linkedin_username",
+            "pinterest_username",
+            "playstation_username",
+            "reddit_username",
+            "snapchat_username",
+            "steam_username",
+            "threads_username",
+            "tiktok_username",
+            "twitter_username",
+            "xbox_username",
+            "xing_username",
+            "youtube_username",
+        ]
